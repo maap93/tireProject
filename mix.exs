@@ -19,7 +19,7 @@ defmodule Tire.Mixfile do
   def application do
     [mod: {Tire, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :coherence, :ex_admin]]
+                    :phoenix_ecto, :postgrex, :coherence, :ex_admin, :arc_ecto]]
   end
 
   # Specifies which paths to compile per environment.
@@ -39,7 +39,9 @@ defmodule Tire.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:coherence, "~> 0.3"},
-     {:ex_admin, github: "smpallen99/ex_admin"},]
+     {:ex_admin, github: "smpallen99/ex_admin"},
+     {:arc, "~> 0.5.2"},
+     {:arc_ecto, "~> 0.4.4"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

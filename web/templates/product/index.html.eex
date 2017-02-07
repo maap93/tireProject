@@ -1,0 +1,12 @@
+
+<%= for product <- @products do %>
+  <p>Product Code: <%= product.product_code %></p>
+  <p>Description: <%= product.description%></p>
+  <p>Pattern: <%= product.pattern %></p>
+  <p>In Stock: <%= product.stock %></p>
+  <p>Price: $<%= product.price %></p>
+
+  <img src="<%= Tire.ImageUploader.url(product.image)%>">
+
+
+<% end %>

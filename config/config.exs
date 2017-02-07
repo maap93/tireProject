@@ -23,6 +23,7 @@ config :ex_admin,
   modules: [
     Tire.ExAdmin.Dashboard,
     Tire.ExAdmin.User,
+    Tire.ExAdmin.Product,
   ]
 
 # Configures Elixir's Logger
