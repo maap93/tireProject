@@ -40,10 +40,16 @@ defmodule Tire.Router do
 
     get "/", PageController, :index
 
-    # Protect the acces to the product section
-    scope "/products", Tire do
+    # Protect the access to the product section
+    scope "/products" do
       pipe_through :protected
       resources "/", ProductController
+    end
+
+    # Protect the acces to the requests section
+    scope "/requests" do
+      pipe_through :protected
+      resources "/", RequestController
     end
 
   end
