@@ -24,6 +24,8 @@ config :ex_admin,
     Tire.ExAdmin.Dashboard,
     Tire.ExAdmin.User,
     Tire.ExAdmin.Product,
+    Tire.ExAdmin.Request,
+    Tire.ExAdmin.Order,
   ]
 
 # Configures Elixir's Logger
