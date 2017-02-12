@@ -10,6 +10,8 @@ defmodule Tire.Product do
     field :price, :float
     field :image, Tire.ImageUploader.Type
 
+    many_to_many :requests, Tire.Request, join_through: Tire.Order
+
     timestamps()
   end
 

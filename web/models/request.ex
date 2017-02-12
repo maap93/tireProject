@@ -4,6 +4,7 @@ defmodule Tire.Request do
   schema "requests" do
     field :comments, :string
     belongs_to :user, Tire.User
+    many_to_many :products, Tire.Product, join_through: Tire.Order
 
     timestamps()
   end

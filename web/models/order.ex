@@ -2,6 +2,8 @@ defmodule Tire.Order do
   use Tire.Web, :model
 
   schema "orders" do
+    belongs_to :request, Tire.Request
+    belongs_to :product, Tire.Product
 
     timestamps()
   end
@@ -11,7 +13,7 @@ defmodule Tire.Order do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [])
+    |> cast(params, [:request_id, :product_id])
     |> validate_required([])
   end
 end

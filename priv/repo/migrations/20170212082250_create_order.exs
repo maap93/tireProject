@@ -3,6 +3,8 @@ defmodule Tire.Repo.Migrations.CreateOrder do
 
   def change do
     create table(:orders) do
+      add :request_id, references(:requests)
+      add :product_id, references(:products)
 
       timestamps()
     end
