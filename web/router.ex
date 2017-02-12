@@ -36,10 +36,16 @@ defmodule Tire.Router do
   end
 
   scope "/", Tire do
-    pipe_through :protected # Use the default browser stack
+    pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/products", ProductController
+
+    # Protect the acces to the product section
+    scope "/products", Tire do
+      pipe_through :protected
+      resources "/", ProductController
+    end
+
   end
 
   scope "/", Tire do
