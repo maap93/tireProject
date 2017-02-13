@@ -1,0 +1,11 @@
+<p>Requests</p>
+
+<%= for request <- @requests do %>
+  <%=request.comments%>
+  <%=request.user.name%>
+
+<% end %>
+
+
+
+<%= link "New Request", to: request_path(@conn, :new) %>
