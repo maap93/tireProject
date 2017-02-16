@@ -1,4 +1,0 @@
-<p>New Request</p>
-<%= render "form.html", changeset: @changeset,
-                        action: request_path(@conn, :create) %>
-<%= link "Back", to: request_path(@conn, :index) %>
