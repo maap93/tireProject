@@ -39,19 +39,12 @@ defmodule Tire.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+  end
 
-    # Protect the access to the product section
-    scope "/products" do
-      pipe_through :protected
-      resources "/", ProductController
-    end
-
-    # Protect the acces to the requests section
-    scope "/requests" do
-      pipe_through :protected
-      resources "/", RequestController
-    end
-
+  # Protect the access to the product section
+  scope "/products", Tire do
+    pipe_through :protected
+    resources "/", ProductController
   end
 
   scope "/", Tire do
