@@ -1,0 +1,8 @@
+<h2>Show request</h2>
+
+<ul>
+
+</ul>
+
+<%= link "Edit", to: request_path(@conn, :edit, @request) %>
+<%= link "Back", to: request_path(@conn, :index) %>

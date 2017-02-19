@@ -1,30 +1,78 @@
+<script>
+      // use $ here safely.
+      $(document).ready(function() {
+       $("#content-slider").lightSlider({
+                 loop:true,
+                 keyPress:true
+             });
+             $('#image-gallery').lightSlider({
+                 gallery:true,
+                 item:1,
+                 thumbItem:9,
+                 slideMargin: 0,
+                 speed:500,
+                 auto:true,
+                 loop:true,
+                 onSliderLoad: function() {
+                     $('#image-gallery').removeClass('cS-hidden');
+                 }
+             });
+     });
+</script>
 
-<div class="row">
+<div class="container">
+  <div class="row">
+
+  <table>
+    <tr>
+      <th>Product Code</th>
+      <th>description</th>
+      <th>pattern</th>
+      <th>In stock</th>
+      <th>price</th>
+    </tr>
+    <%= for product <- @products do %>
+    <div class="item" style="border-style: solid;">
+        <div class="clearfix">
+            <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+
+                <li data-thumb="<%= Tire.ImageUploader.url(product.image1)%>">
+                    <img src="<%= Tire.ImageUploader.url(product.image1)%>" />
+                </li>
+
+                <li data-thumb="<%= Tire.ImageUploader.url(product.image1)%>">
+                    <img src="<%= Tire.ImageUploader.url(product.image1)%>" />
+                </li>
+
+                <li data-thumb="<%= Tire.ImageUploader.url(product.image1)%>">
+                    <img src="<%= Tire.ImageUploader.url(product.image1)%>" />
+                </li>
+
+                <li data-thumb="<%= Tire.ImageUploader.url(product.image1)%>">
+                    <img src="<%= Tire.ImageUploader.url(product.image1)%>" />
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <tr>
+      <td><p>Product Code: <%= product.product_code %></p></td>
+      <td><p>Description: <%= product.description%></p></td>
+      <td><p>Pattern: <%= product.pattern %></p></td>
+      <td><p>In Stock: <%= product.stock %></p></td>
+      <td><p>Price: $<%= product.price %></p></td>
+      <td>
+        <img src="<%= Tire.ImageUploader.url(product.image1)%>">
+        <img src="<%= Tire.ImageUploader.url(product.image2)%>">
+        <img src="<%= Tire.ImageUploader.url(product.image3)%>">
+        <img src="<%= Tire.ImageUploader.url(product.image4)%>">
+      </td>
+    </tr>
+
+    <% end %>
+  </table>
 
 
 
-
-<table>
-  <tr>
-    <th>Product Code</th>
-    <th>description</th>
-    <th>pattern</th>
-    <th>In stock</th>
-    <th>price</th>
-  </tr>
-  <%= for product <- @products do %>
-  <tr>
-    <td><p>Product Code: <%= product.product_code %></p></td>
-    <td><p>Description: <%= product.description%></p></td>
-    <td><p>Pattern: <%= product.pattern %></p></td>
-    <td><p>In Stock: <%= product.stock %></p></td>
-    <td><p>Price: $<%= product.price %></p></td>
-    <td><img src="<%= Tire.ImageUploader.url(product.image)%>"></td>
-  </tr>
-
-  <% end %>
-</table>
-
-
-
+  </div>
 </div>

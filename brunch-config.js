@@ -4,14 +4,15 @@ exports.config = {
     javascripts: {
            joinTo: {
              "js/app.js": /^(web\/static\/js)|(node_modules)/,
+             "js/jquery.min.js": ["web/static/vendor/jquery.min.js"],
              "js/ex_admin_common.js": ["web/static/vendor/ex_admin_common.js"],
              "js/admin_lte2.js": ["web/static/vendor/admin_lte2.js"],
-             "js/jquery.min.js": ["web/static/vendor/jquery.min.js"],
            }
          },
      stylesheets: {
             joinTo: {
               "css/app.css": /^(web\/static\/css)/,
+              "css/lightslider.css": ["web/static/css/lightslider.css"],
               "css/admin_lte2.css": ["web/static/vendor/admin_lte2.css"],
               "css/active_admin.css.css": ["web/static/vendor/active_admin.css.css"],
             },

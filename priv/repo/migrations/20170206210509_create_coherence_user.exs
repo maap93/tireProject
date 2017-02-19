@@ -4,6 +4,7 @@ defmodule Tire.Repo.Migrations.CreateCoherenceUser do
     create table(:users) do
       add :name, :string
       add :email, :string
+      add :admin, :boolean, default: false
       # trackable
       add :sign_in_count, :integer, default: 0
       add :current_sign_in_at, :datetime
@@ -22,7 +23,7 @@ defmodule Tire.Repo.Migrations.CreateCoherenceUser do
       add :locked_at, :datetime
       # unlockable_with_token
       add :unlock_token, :string
-      
+
       timestamps()
     end
     create unique_index(:users, [:email])

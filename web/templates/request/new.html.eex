@@ -1,0 +1,9 @@
+<h2>New request</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        product_id: @product_id,
+                        user_id: @user_id,
+                        name: @name,
+                        action: request_path(@conn, :create) %>
+
+<%= link "Back", to: request_path(@conn, :index) %>

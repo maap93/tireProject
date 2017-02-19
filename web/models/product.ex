@@ -8,7 +8,10 @@ defmodule Tire.Product do
     field :pattern, :string
     field :stock, :integer
     field :price, :float
-    field :image, Tire.ImageUploader.Type
+    field :image1, Tire.ImageUploader.Type
+    field :image2, Tire.ImageUploader.Type
+    field :image3, Tire.ImageUploader.Type
+    field :image4, Tire.ImageUploader.Type
 
     many_to_many :requests, Tire.Request, join_through: Tire.Order
 
@@ -20,7 +23,7 @@ defmodule Tire.Product do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:product_code, :description, :pattern, :stock, :price, :image])
-    |> validate_required([:product_code, :description, :pattern, :stock, :price, :image])
+    |> cast(params, [:product_code, :description, :pattern, :stock, :price, :image1, :image2, :image3, :image4])
+    |> validate_required([:product_code, :description, :pattern, :stock, :price, :image1, :image2, :image3, :image4])
   end
 end

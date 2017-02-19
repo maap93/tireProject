@@ -15,5 +15,13 @@ Tire.Repo.delete_all Tire.Order
 Tire.Repo.delete_all Tire.Product
 
 
-Tire.User.changeset(%Tire.User{}, %{name: "Test User", email: "testuser@example.com", password: "secret", password_confirmation: "secret"})
+Tire.Repo.delete_all Tire.User
+
+Tire.User.changeset(%Tire.User{}, %{name: "Administrator", email: "admin@example.org", password: "password", password_confirmation: "password", admin: true})
+|> Tire.Repo.insert!
+
+Tire.User.changeset(%Tire.User{}, %{name: "Guest", email: "guest@example.org", password: "password", password_confirmation: "password", admin: false})
+|> Tire.Repo.insert!
+
+Tire.User.changeset(%Tire.User{}, %{name: "Miguel", email: "admin@admin.com", password: "admin", password_confirmation: "admin", admin: true})
 |> Tire.Repo.insert!
