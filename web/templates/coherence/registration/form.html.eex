@@ -1,45 +1,53 @@
-<%= form_for @changeset, @action, [as: :registration], fn f  -> %>
+<div class="main-w3l">
+  <div class="w3layouts-main">
+    <h2>Register Account</h2>
+    <%= form_for @changeset, @action, [as: :registration], fn f  -> %>
 
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
-    </div>
-  <% end %>
+      <%= if @changeset.action do %>
+        <div class="alert alert-danger">
+          <p>Oops, something went wrong! Please check the errors below.</p>
+        </div>
+      <% end %>
 
-  <div class="form-group">
-    <%= required_label f, :name, class: "control-label" %>
-    <%= text_input f, :name, class: "form-control", required: "" %>
-    <%= error_tag f, :name %>
+      <!-- Name field -->
+      <%= text_input f, :name, required: "", type: "name", value: "Name", onfocus: "this.value = '';", onblur: "if (this.value == '') {this.value = 'Name';}" %>
+      <%= error_tag f, :name %>
+
+
+      <%= unless (login_field = Coherence.Config.login_field) == :email do %>
+        <div class="form-group">
+          <%= required_label f, login_field, class: "control-label" %>
+          <%= text_input f, login_field, class: "form-control", required: "" %>
+          <%= error_tag f, login_field %>
+        </div>
+      <% end %>
+
+      <!-- Email field -->
+      <%= text_input f, login_field, required: "", type: "email", onfocus: "this.value = '';", onblur: "if (this.value == '') {this.value = 'E-Mail';}", value: "E-Mail" %>
+      <%= error_tag f, :email %>
+
+
+      <!-- Password Field -->
+      <%= password_input f, :password, [class: ""] ++ @required %>
+      <h6 class="customH6">Password</h6>
+      <%= error_tag f, :password %>
+
+
+      <!-- Password Confirmation Field -->
+      <%= password_input f, :password_confirmation, [class: ""] ++ @required %>
+      <h6 class="customH6">Confirmation</h6>
+      <%= error_tag f, :password_confirmation %>
+
+      <br><br><br><br>
+
+      <%= submit @label, class: "login-btn" %>
+      <br>
+      <%= link "Cancel", to: Coherence.Config.logged_out_url("/"), class: "btn" %>
+
+    <% end %>
   </div>
+</div>
 
-  <%= unless (login_field = Coherence.Config.login_field) == :email do %>
-    <div class="form-group">
-      <%= required_label f, login_field, class: "control-label" %>
-      <%= text_input f, login_field, class: "form-control", required: "" %>
-      <%= error_tag f, login_field %>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= required_label f, :email, class: "control-label" %>
-    <%= text_input f, :email, class: "form-control", required: "" %>
-    <%= error_tag f, :email %>
-  </div>
-
-  <div class="form-group">
-    <%= required_label f, :password, class: "control-label" %>
-    <%= password_input f, :password, [class: "form-control"] ++ @required %>
-    <%= error_tag f, :password %>
-  </div>
-
-  <div class="form-group">
-    <%= required_label f, :password_confirmation, class: "control-label" %>
-    <%= password_input f, :password_confirmation, [class: "form-control"] ++ @required %>
-    <%= error_tag f, :password_confirmation %>
-  </div>
-
-  <div class="form-group">
-    <%= submit @label, class: "btn btn-primary" %>
-    <%= link "Cancel", to: Coherence.Config.logged_out_url("/"), class: "btn" %>
-  </div>
-<% end %>
+<div class="footer-w3l">
+  <p>&copy; 2017 Country Tire Distributors. All rights reserved</p>
+</div>
