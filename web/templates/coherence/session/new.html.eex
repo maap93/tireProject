@@ -1,34 +1,34 @@
-<br \>
+<div class="agileheader">
+	<h1>Welcome to Country Tire Distributors</h1>
+</div>
 
-<%= form_for @conn, session_path(@conn, :create), [as: :session], fn f  -> %>
+<div class="main-w3l">
+  <div class="w3layouts-main">
+    <h2>Login</h2>
+    <%= form_for @conn, session_path(@conn, :create), [as: :session], fn f  -> %>
 
-  <% login_field = Coherence.Config.login_field %>
-  <div class="form-group">
-    <%= required_label f, login_field, class: "control-label" %>
-    <%= text_input f, login_field, class: "form-control", required: "" %>
-    <%= error_tag f, login_field %>
+      <% login_field = Coherence.Config.login_field %>
+
+        <!-- Login field -->
+        <%= text_input f, login_field, required: "", type: "email", onfocus: "this.value = '';", onblur: "if (this.value == '') {this.value = 'E-Mail';}", value: "E-Mail" %>
+        <%= error_tag f, login_field %>
+
+        <!-- Password field -->
+        <%= password_input f, :password, required: "", type: "password", onfocus: "this.value = '';", onblur: "if (this.value == '') {this.value = 'password';}", value: "Password"  %>
+        <%= error_tag f, :password %>
+
+        <div class="clear"></div>
+
+        <%= submit "Sign In", class: "login-btn" %>
+        <br>
+        <%= link "Cancel", to: Coherence.Config.logged_out_url("/"), class: "btn" %>
+
+        <p><%= coherence_links(@conn, :new_session) %></p>
+
+    <% end %>
   </div>
+</div>
 
-  <div class="form-group">
-    <%= required_label f, :password, class: "control-label" %>
-    <%= password_input f, :password, class: "form-control", required: "" %>
-    <%= error_tag f, :password %>
-  </div>
-
-  <%= if @remember do %>
-    <div class="form-group">
-      <input type="checkbox"  name="remember"> Remember Me?
-    </div>
-    <br />
-  <% end %>
-
-  <div class="form-group">
-    <%= submit "Sign In", class: "btn btn-primary" %>
-    <%= link "Cancel", to: Coherence.Config.logged_out_url("/"), class: "btn" %>
-  </div>
-
-  <div class="form-group">
-    <%= coherence_links(@conn, :new_session) %>
-  </div>
-
-<% end %>
+<div class="footer-w3l">
+	<p>&copy; 2017 Country Tire Distributors. All rights reserved</p>
+</div>

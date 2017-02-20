@@ -34,9 +34,9 @@ body p,h1,h2,h3,h4,h5,h6,a{
 body {/*--
 	background:pink;
 	*/
-    background: url('../images/bg3.jpg') no-repeat 62% 34%;
-    background-size: cover;
-	text-align:center;
+    /*background: url('../images/bg3.jpg') no-repeat 62% 34%;*/
+    /*background-size: cover;
+		text-align:center;*/
 }
 /*--header--*/
 .agileheader h1 {
@@ -113,7 +113,7 @@ input[type="password"] {
 	-moz-transition:0.5s all;
 	-ms-transition:0.5s all;
 }
-input[type="submit"] {
+.login-btn {
     padding: 12px 38px;
     font-size: 18px;
     text-transform: uppercase;
@@ -131,7 +131,7 @@ input[type="submit"] {
     -moz-transition: 0.5s all;
     -ms-transition: 0.5s all;
 }
-input[type="submit"]:hover {
+.login-btn :hover {
 	background:rgba(213, 38, 133, 0.64);
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
@@ -321,7 +321,7 @@ input[type="submit"]:hover {
 		font-size: 17px;
 		letter-spacing: 0px;
 	}
-	input[type="submit"] {
+	.login-btn {
 		font-size: 17px;
 	}
 	input[type="email"], input[type="password"] {
@@ -370,7 +370,7 @@ input[type="submit"]:hover {
 		margin: 2em 0.6em;
 		line-height:1.8;
 	}
-	input[type="submit"] {
+	.login-btn {
 		margin: 45px auto 25px;
 	}
 	.footer-w3l p {
@@ -411,7 +411,7 @@ input[type="submit"]:hover {
 		width: 51%;
 		margin-top: 12px;
 	}
-	input[type="submit"] {
+	.login-btn {
 		padding: 12px 52px;
 		font-size: 17px;
 		letter-spacing: 1px;
@@ -451,7 +451,7 @@ input[type="submit"]:hover {
 	.w3layouts-main h2 {
 		letter-spacing: 1px;
 	}
-	input[type="submit"] {
+	.login-btn {
 		padding: 12px 33px;
 		font-size: 15px;
 		letter-spacing: 0px;
@@ -500,7 +500,7 @@ input[type="submit"]:hover {
 	.w3layouts-main span {
 		font-size: 14px;
 	}
-	input[type="submit"] {
+	.login-btn {
 		font-size: 15px;
 	}
 	.w3layouts-main p {
