@@ -7,7 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Admin1!</title>
+    <title>Country Tire</title>
+    <link rel='shortcut icon' type='image/x-icon' href='/images/favicon-32x32.png' />
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 

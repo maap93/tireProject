@@ -17,10 +17,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">About</a>
+                    <%= link "Home", to: page_path(@conn, :index)%>
                 </li>
                 <li>
-                    <a href="#">Services</a>
+                    <%= link "Products", to: product_path(@conn, :index)%>
                 </li>
                 <li>
                     <a href="#">Contact</a>
@@ -35,17 +35,3 @@
     </div>
     <!-- /.container -->
 </nav>
-
-
-
-
-<!--<header class="header">
-  <nav role="navigation">
-    <ul class="nav nav-pills pull-right">
-
-      <%= Tire.Coherence.ViewHelpers.coherence_links(@conn, :layout) %>-->
-      <!--<li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>-->
-    <!--</ul>
-  </nav>
-  <span class="logo"></span>
-</header>-->
