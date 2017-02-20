@@ -5,10 +5,12 @@
   <!-- End Header Section -->
 
   <body>
+
+    <!-- Render the navbar -->
+    <%= render"navbar.html", assigns %>
+
     <!-- General Container -->
     <div class="container-fluid">
-      <!-- Render the navbar -->
-      <%= render"navbar.html", assigns %>
 
       <!-- Render the information -->
       <%= render @view_module, @view_template, assigns %>

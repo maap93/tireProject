@@ -7,6 +7,7 @@ exports.config = {
              "js/jquery.min.js": ["web/static/vendor/jquery.min.js"],
              "js/ex_admin_common.js": ["web/static/vendor/ex_admin_common.js"],
              "js/admin_lte2.js": ["web/static/vendor/admin_lte2.js"],
+             
            }
          },
      stylesheets: {

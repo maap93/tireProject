@@ -24,9 +24,27 @@ img{max-width:100%;}
 /*end reset*/
 
 body{
-padding:0;
+padding-top: 70px;
 margin:0;
 font-family: 'Lato', sans-serif !important;
+}
+
+.navbar-fixed-top .nav {
+    padding: 15px 0;
+}
+
+.navbar-fixed-top .navbar-brand {
+    padding: 0 15px;
+}
+
+@media(min-width:768px) {
+    body {
+        padding-top: 100px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+    }
+
+    .navbar-fixed-top .navbar-brand {
+        padding: 15px 0;
+    }
 }
 
 /*h1,h2,h3,h4,h5,h6{
