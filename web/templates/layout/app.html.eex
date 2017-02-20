@@ -1,38 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Hello Tire!</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-  </head>
+<html>
+  <!-- Header Section-->
+  <%= render "header.html", assigns  %>
+  <!-- End Header Section -->
 
   <body>
+    <!-- General Container -->
     <div class="container-fluid">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
+      <!-- Render the navbar -->
+      <%= render"navbar.html", assigns %>
 
-            <%= Tire.Coherence.ViewHelpers.coherence_links(@conn, :layout) %>
-            <!--<li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>-->
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
+      <!-- Render the information -->
+      <%= render @view_module, @view_template, assigns %>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <!-- Render the footer section -->
+      <div class="row" style="background-color: #282828;">
+        <div class="col-xs-12" style="padding: 0 !important;">
+          <%= render "footer.html", assigns %>
+        </div>
+      </div>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
+    </div>
+    <!-- End General Container -->
 
-    </div> <!-- /container -->
+    <!-- Loading Js -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
