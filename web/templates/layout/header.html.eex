@@ -5,7 +5,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Country Tire</title>
+  <title>Countrywire Tire</title>
   <link rel='shortcut icon' type='image/x-icon' href='/images/favicon-32x32.png' />
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
