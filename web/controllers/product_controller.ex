@@ -14,5 +14,9 @@ defmodule Tire.ProductController do
     render(conn, "new.html", changeset: changeset)
   end
 
+  def show(conn, %{"id" => id}) do
+    product = Repo.get!(Product, id)
+    render(conn, "show.html", product: product)
+  end
 
 end

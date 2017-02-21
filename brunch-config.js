@@ -16,6 +16,7 @@ exports.config = {
               "css/lightslider.css": ["web/static/css/lightslider.css"],
               "css/admin_lte2.css": ["web/static/vendor/admin_lte2.css"],
               "css/login.css": ["web/static/login.css"],
+              "css/cards.css": ["web/static/cards.css"],
               "css/active_admin.css.css": ["web/static/vendor/active_admin.css.css"],
             },
             order: {
