@@ -23,5 +23,5 @@ Tire.User.changeset(%Tire.User{}, %{name: "Administrator", email: "admin@example
 Tire.User.changeset(%Tire.User{}, %{name: "Guest", email: "guest@example.org", password: "password", password_confirmation: "password", admin: false})
 |> Tire.Repo.insert!
 
-Tire.User.changeset(%Tire.User{}, %{name: "Miguel", email: "admin@admin.com", password: "admin", password_confirmation: "admin", admin: true})
+Tire.User.changeset(%Tire.User{}, %{name: "Luis Vazquez", email: "vahqueh@gmail.com", password: "vahqueh12", password_confirmation: "vahqueh12", admin: true})
 |> Tire.Repo.insert!
