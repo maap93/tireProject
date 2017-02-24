@@ -1,0 +1,56 @@
+<script>
+      $(document).ready(function() {
+         $("#content-slider").lightSlider({
+                   loop:true,
+                   keyPress:true
+               });
+               $('#image-gallery').lightSlider({
+                   gallery:true,
+                   item:1,
+                   thumbItem:9,
+                   slideMargin: 0,
+                   speed:500,
+                   auto:true,
+                   loop:true,
+                   onSliderLoad: function() {
+                       $('#image-gallery').removeClass('cS-hidden');
+                   }
+               });
+       });
+</script>
+
+<div class="row" style="margin-bottom: 5%;">
+
+  <!-- Product Images Section -->
+  <div class="col-md-3 col-md-offset-3 col-xs-12">
+    <div class="item" style="border-style: solid;">
+        <div class="clearfix">
+            <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+              <li data-thumb="\<%= Tire.ImageUploader.url(@product.image1)%>">
+                <img src="\<%= Tire.ImageUploader.url(@product.image1)%>" />
+              </li>
+              <li data-thumb="\<%= Tire.ImageUploader.url(@product.image1)%>">
+                  <img src="\<%= Tire.ImageUploader.url(@product.image1)%>" />
+              </li>
+              <li data-thumb="\<%= Tire.ImageUploader.url(@product.image1)%>">
+                  <img src="\<%= Tire.ImageUploader.url(@product.image1)%>" />
+              </li>
+              <li data-thumb="\<%= Tire.ImageUploader.url(@product.image1)%>">
+                  <img src="\<%= Tire.ImageUploader.url(@product.image1)%>" />
+              </li>
+            </ul>
+        </div>
+    </div>
+  </div>
+
+  <!-- Product pattern section -->
+  <div class="col-md-6 col-xs-12">
+    <div class="container_show_products">
+      <h1>Product Information</h1>
+      <h2>Pattern: <%= @product.pattern %></h2>
+      <h2>In Stock: <%= @product.stock %></h2>
+      <h2>$ <%= @product.price %></h2>
+    </div>
+  </div>
+
+</div>

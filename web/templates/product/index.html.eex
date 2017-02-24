@@ -2,7 +2,7 @@
   <h1 style="text-align: center; font-size:5.5rem;">Products</h1>
   <%= for product <- @products do %>
     <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-          <div class="card">
+          <div class="card" style="text-align: center;">
               <img class="card-img-top" src="<%= Tire.ImageUploader.url(product.image1)%>">
               <div class="card-block">
                   <!--<figure class="profile">

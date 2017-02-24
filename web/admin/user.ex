@@ -9,6 +9,7 @@ defmodule Tire.ExAdmin.User do
       column :name
       column :email
       column :admin
+      column :discount
       column :last_sign_in_at
       column :last_sign_in_ip
       column :sign_in_count
@@ -20,6 +21,7 @@ defmodule Tire.ExAdmin.User do
         row :name
         row :email
         row :admin
+        row :discount
         row :reset_password_token
         row :reset_password_sent_at
         row :locked_at
@@ -37,6 +39,7 @@ defmodule Tire.ExAdmin.User do
         input user, :name
         input user, :email
         input user, :admin, as: :radio
+        input user, :discount
         input user, :password, type: :password
         input user, :password_confirmation, type: :password
       end

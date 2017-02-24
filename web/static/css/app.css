@@ -446,3 +446,15 @@ display:block;
 		padding: 50px 0;
 	}
 }
+
+
+/* Show section products */
+.container_show_products h1 {
+  font-size: 2.5rem;
+}
+
+.container_show_products h2 {
+  font-size: 1.5rem;
+  text-align: left;
+  padding: 2%;
+}
