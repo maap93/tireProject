@@ -9,6 +9,9 @@ use Mix.Config
 config :tire,
   ecto_repos: [Tire.Repo]
 
+config :scrivener_html,
+  routes_helper: Tire.Router.Helpers
+
 # Configures the endpoint
 config :tire, Tire.Endpoint,
   url: [host: "localhost"],
@@ -43,8 +46,8 @@ config :coherence,
   repo: Tire.Repo,
   module: Tire,
   logged_out_url: "/",
-  email_from_name: "Your Name",
-  email_from_email: "yourname@example.com",
+  email_from_name: "Admin",
+  email_from_email: "maap93@outlook.com",
   opts: [:trackable, :invitable, :rememberable, :authenticatable, :recoverable, :lockable, :unlockable_with_token, :registerable]
 
 config :coherence, Tire.Coherence.Mailer,

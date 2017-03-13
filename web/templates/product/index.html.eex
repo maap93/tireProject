@@ -1,28 +1,49 @@
 <div class="row" style="margin-bottom: 1%;">
-  <h1 style="text-align: center; font-size:5.5rem;">Products</h1>
-  <%= for product <- @products do %>
-    <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-          <div class="card" style="text-align: center;">
-              <img class="card-img-top" src="<%= Tire.ImageUploader.url(product.image1)%>">
-              <div class="card-block">
-                  <!--<figure class="profile">
-                      <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
-                  </figure>-->
-                  <h4 class="card-title mt-3">Pattern: <%= product.pattern %> </h4>
-                  <div class="meta">
-                      <p>In Stock: <a><%= product.stock %></a> </p>
-                  </div>
-                  <div class="card-text">
-                    <h1 style="font-weight: bold;">Price: </h1>
-                      <p> $ <%= product.price %> </p>
-                  </div>
-              </div>
-              <div class="card-footer">
-                  <!--<small>Last updated 3 mins ago</small>-->
-                  <%= link "Show", to: product_path(@conn, :show, product), class: "btn btn-block", style: "border-color: black;" %>
-                  <!--<button class="btn btn-secondary float-right btn-sm">show</button>-->
-              </div>
-          </div>
-      </div>
-  <%= end %>
+  <h1 style="text-align: center; font-size:5.5rem; margin-bottom: 1%;">Products</h1>
+
+  <table class="table table-hover">
+    <tr align="center">
+      <th style="text-align: center;">Product</th>
+      <th style="text-align: center;">Description</th>
+      <th style="text-align: center;">Pattern</th>
+      <th style="text-align: center;">Stock</th>
+      <th style="text-align: center;">Price</th>
+      <th style="text-align: center;">Discount Price</th>
+    </tr>
+    <%= for product <- @products do %>
+      <tr>
+        <td style="text-align: center;">
+          <img style="margin-top: 5%;" height="68" width="68" src="<%= Tire.ImageUploader.url(product.image1)%>">
+          <p><%= product.pattern %></p>
+        </td>
+        <td style="text-align: center; vertical-align: middle;">
+          <p><%= product.description %></p>
+        </td>
+        <td style="text-align: center; vertical-align: middle;">
+          <p><%= product.pattern %></p>
+        </td>
+        <td style="text-align: center; vertical-align: middle;">
+          <p><%= product.stock %></p>
+        </td>
+        <td style="text-align: center; vertical-align: middle;">
+          <p>$ <%= product.price %></p>
+        </td>
+        <td style="text-align: center; vertical-align: middle;">
+          <p>
+            <%= if @user_discount == nil do %>
+              $ <%= product.price %>
+            <%= else %>
+              $ <%= product.price - (@user_discount * product.price / 100) %>
+            <% end  %>
+          </p>
+        </td>
+      </tr>
+    <%= end %>
+  </table>
+  <%= pagination_links @products %>
+  <!--<div class="text-center">
+    <ul class="pagination">
+      <li><a href="#">1</a></li>
+    </ul>
+  </div>-->
 </div>

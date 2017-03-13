@@ -6,7 +6,16 @@ defmodule Tire.ProductController do
 
   def index(conn, _params) do
     products = Repo.all(Product)
-    render(conn, "index.html", products: products)
+    products = Tire.Product |> Tire.Repo.paginate(page_size: 2)
+    IO.inspect products
+    user_discount = conn.assigns.current_user.discount
+    render(conn, "index.html",
+    products: products,
+    user_discount: user_discount,
+    page_number: products.page_number,
+    page_size: products.page_size,
+    total_pages: products.total_pages,
+    total_entries: products.total_entries)
   end
 
   def new(conn, _params) do
