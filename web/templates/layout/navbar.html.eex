@@ -23,7 +23,7 @@
                     <%= link "Products", to: product_path(@conn, :index)%>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="#">My Account</a>
                 </li>
 
             </ul>
