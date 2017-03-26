@@ -52,7 +52,7 @@ config :coherence,
 
 config :coherence, Tire.Coherence.Mailer,
   adapter: Swoosh.Adapters.Mailgun,
-  api_key: "pubkey-8e4db0f170320b301d2dafdba4b7fbe8",
+  api_key: "key-787f5f984a51f3d03a0801e6da969c85",
   domain: "ctdtires.com"
 # %% End Coherence Configuration %%
 
