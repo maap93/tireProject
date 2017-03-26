@@ -1,5 +1,13 @@
 <div class="row" style="margin-bottom: 1%;">
-  <h1 style="text-align: center; font-size:5.5rem; margin-bottom: 1%;">Products</h1>
+  <div style="display:flex; justify-content: center; margin: 3%; align-items: center;">
+      <div style="width: 100%;">
+        <h1 style="text-align: center; font-size:5.5rem; margin-bottom: 1%;">Products</h1>
+      </div>
+      <div class="text-right">
+        <button type="button" class="btn btn-dafault">View Order</button>
+      </div>
+  </div>
+
 
   <table class="table table-hover">
     <tr align="center">
@@ -9,6 +17,7 @@
       <th style="text-align: center;">Stock</th>
       <th style="text-align: center;">Price</th>
       <th style="text-align: center;">Discount Price</th>
+      <th style="text-align: center;">Quantity</th>
     </tr>
     <%= for product <- @products do %>
       <tr>
@@ -37,6 +46,17 @@
             <% end  %>
           </p>
         </td>
+        <td style="text-align: center; vertical-align: middle;">
+
+          <div style="display:flex; justify-content: center; margin: 3%; align-items: center;">
+            <div class="">
+              <input type="number" name="quantity" min="0" max="<%= product.stock %>" class="form-control">
+            </div>
+            <div style="margin-left: 5%;">
+              <input id="clickMe" type="submit" value="Add to Order" class="btn">
+            </div>
+          </div>
+        </td>
       </tr>
     <%= end %>
   </table>
@@ -45,9 +65,8 @@
       <%= pagination_links @page, next: "Next", previous: "Prev" %>
   </div>
 
-  <!--<div class="text-center">
-    <ul class="pagination">
-      <li><a href="#">1</a></li>
-    </ul>
-  </div>-->
 </div>
+
+<script type="text/javascript">
+  document.getElementById("clickMe").onclick = function () { alert('hello!'); };
+</script>
