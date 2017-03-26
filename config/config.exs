@@ -47,12 +47,13 @@ config :coherence,
   module: Tire,
   logged_out_url: "/",
   email_from_name: "Admin",
-  email_from_email: "maap93@outlook.com",
+  email_from_email: "webmaster@ctdtires.com",
   opts: [:trackable, :invitable, :rememberable, :authenticatable, :recoverable, :lockable, :unlockable_with_token, :registerable]
 
 config :coherence, Tire.Coherence.Mailer,
-  adapter: Swoosh.Adapters.Sendgrid,
-  api_key: "your api key here"
+  adapter: Swoosh.Adapters.Mailgun,
+  api_key: "pubkey-8e4db0f170320b301d2dafdba4b7fbe8",
+  domain: "ctdtires.com"
 # %% End Coherence Configuration %%
 
 config :xain, :after_callback, {Phoenix.HTML, :raw}

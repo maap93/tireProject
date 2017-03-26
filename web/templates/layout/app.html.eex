@@ -16,7 +16,7 @@
       <%= render @view_module, @view_template, assigns %>
 
       <!-- Render the footer section -->
-      <div class="row" style="background-color: #282828;">
+      <div class="row" style="background-color: #282828; margin-top: 3%;">
         <div class="col-xs-12" style="padding: 0 !important;">
           <%= render "footer.html", assigns %>
         </div>

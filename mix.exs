@@ -19,7 +19,8 @@ defmodule Tire.Mixfile do
   def application do
     [mod: {Tire, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :coherence, :ex_admin, :arc_ecto, :scrivener_html, :scrivener_ecto]]
+                    :phoenix_ecto, :postgrex, :coherence, :ex_admin, :arc_ecto, :scrivener_html,
+                    :scrivener_ecto, :swoosh]]
   end
 
   # Specifies which paths to compile per environment.
@@ -44,7 +45,8 @@ defmodule Tire.Mixfile do
      {:arc_ecto, "~> 0.4.4"},
      {:exrm, "~> 0.15.3" },
      {:scrivener_html, "~>1.1"},
-     {:scrivener_ecto, "~> 1.0"}]
+     {:scrivener_ecto, "~> 1.0"},
+     {:swoosh, "~> 0.7.0"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

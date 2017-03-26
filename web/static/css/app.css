@@ -458,3 +458,11 @@ display:block;
   text-align: left;
   padding: 2%;
 }
+/* Table products section*/
+.dataTables_length{
+  margin-left: 5%;
+}
+
+#products_info{
+  margin-left: 5%;
+}

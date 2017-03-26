@@ -1,5 +1,5 @@
 <div class="row" style="margin-bottom: 1%;">
-  <div style="display:flex; justify-content: center; margin: 3%; align-items: center;">
+  <div style="display:flex; justify-content: center; margin-bottom: 3%; align-items: center;">
       <div style="width: 100%;">
         <h1 style="text-align: center; font-size:5.5rem; margin-bottom: 1%;">Products</h1>
       </div>
@@ -9,7 +9,15 @@
   </div>
 
 
-  <table class="table table-hover">
+
+  <div class="text-center">
+      <%= #pagination_links @page, next: "Next", previous: "Prev" %>
+  </div>
+
+</div>
+
+<table id="products" class="table table-hover" style="width: 100%;">
+  <thead>
     <tr align="center">
       <th style="text-align: center;">Product</th>
       <th style="text-align: center;">Description</th>
@@ -19,54 +27,56 @@
       <th style="text-align: center;">Discount Price</th>
       <th style="text-align: center;">Quantity</th>
     </tr>
-    <%= for product <- @products do %>
-      <tr>
-        <td style="text-align: center;">
-          <img style="margin-top: 5%;" height="68" width="68" src="<%= Tire.ImageUploader.url(product.image1)%>">
-          <p><%= product.product_code %></p>
-        </td>
-        <td style="text-align: center; vertical-align: middle;">
-          <p><%= product.description %></p>
-        </td>
-        <td style="text-align: center; vertical-align: middle;">
-          <p><%= product.pattern %></p>
-        </td>
-        <td style="text-align: center; vertical-align: middle;">
-          <p><%= product.stock %></p>
-        </td>
-        <td style="text-align: center; vertical-align: middle;">
-          <p>$ <%= product.price %></p>
-        </td>
-        <td style="text-align: center; vertical-align: middle;">
-          <p>
-            <%= if @user_discount == nil do %>
-              $ <%= product.price %>
-            <%= else %>
-              $ <%= product.price - (@user_discount * product.price / 100) %>
-            <% end  %>
-          </p>
-        </td>
-        <td style="text-align: center; vertical-align: middle;">
+  </thead>
+  <tbody>
+  <%= for product <- @products do %>
+    <tr>
+      <td style="text-align: center;">
+        <img style="margin-top: 5%;" height="68" width="68" src="<%= Tire.ImageUploader.url(product.image1)%>">
+        <p><%= product.product_code %></p>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <p><%= product.description %></p>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <p><%= product.pattern %></p>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <p><%= product.stock %></p>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <p>$ <%= product.price %></p>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <p>
+          <%= if @user_discount == nil do %>
+             <%= product.price %>
+          <%= else %>
+             <%= product.price - (@user_discount * product.price / 100) %>
+          <% end  %>
+        </p>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
 
-          <div style="display:flex; justify-content: center; margin: 3%; align-items: center;">
-            <div class="">
-              <input type="number" name="quantity" min="0" max="<%= product.stock %>" class="form-control">
-            </div>
-            <div style="margin-left: 5%;">
-              <input id="clickMe" type="submit" value="Add to Order" class="btn">
-            </div>
+        <div style="display:flex; justify-content: center; margin: 3%; align-items: center;">
+          <div class="">
+            <input type="number" name="quantity" min="0" max="<%= product.stock %>" class="form-control">
           </div>
-        </td>
-      </tr>
-    <%= end %>
-  </table>
-
-  <div class="text-center">
-      <%= pagination_links @page, next: "Next", previous: "Prev" %>
-  </div>
-
-</div>
+          <div style="margin-left: 5%;">
+            <input id="clickMe" type="submit" value="Add to Order" class="btn">
+          </div>
+        </div>
+      </td>
+    </tr>
+  <%= end %>
+  </tbody>
+</table>
 
 <script type="text/javascript">
-  document.getElementById("clickMe").onclick = function () { alert('hello!'); };
+  //document.getElementById("clickMe").onclick = function () { alert('hello!'); };
+  $(document).ready(function(){
+      $('#products').DataTable({
+        stateSave: true,
+      });
+  });
 </script>
