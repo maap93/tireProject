@@ -13,12 +13,14 @@
   <thead>
     <tr align="center">
       <th style="text-align: center;">Product</th>
+      <th style="text-align: center; display: none;">Product</th>
       <th style="text-align: center;">Description</th>
       <th style="text-align: center;">Pattern</th>
       <th style="text-align: center;">Stock</th>
       <th style="text-align: center;">Price</th>
       <th style="text-align: center;">Discount Price</th>
       <th style="text-align: center;">Quantity</th>
+      <th style="text-align: center;"></th>
     </tr>
   </thead>
   <tbody>
@@ -28,38 +30,37 @@
         <img style="margin-top: 5%;" height="68" width="68" src="<%= Tire.ImageUploader.url(product.image1)%>">
         <p><%= product.product_code %></p>
       </td>
-      <td style="text-align: center; vertical-align: middle;">
-        <p><%= product.description %></p>
+      <td style="text-align: center; display:none;">
+        <%= product.product_code %>
       </td>
       <td style="text-align: center; vertical-align: middle;">
-        <p><%= product.pattern %></p>
+        <%= product.description %>
       </td>
       <td style="text-align: center; vertical-align: middle;">
-        <p><%= product.stock %></p>
+        <%= product.pattern %>
       </td>
       <td style="text-align: center; vertical-align: middle;">
-        <p>$ <%= product.price %></p>
+        <%= product.stock %>
       </td>
       <td style="text-align: center; vertical-align: middle;">
-        <p>
-          <%= if @user_discount == nil do %>
-             <%= product.price %>
-          <%= else %>
-             <%= product.price - (@user_discount * product.price / 100) %>
-          <% end  %>
-        </p>
+        $ <%= product.price %>
       </td>
       <td style="text-align: center; vertical-align: middle;">
+        <%= if @user_discount == nil do %>
+           $ <%= product.price %>
+        <%= else %>
+           $ <%= product.price - (@user_discount * product.price / 100) %>
+        <% end  %>
+      </td>
 
-        <div style="display:flex; justify-content: center; margin: 3%; align-items: center;">
-          <div class="">
-            <input type="number" name="quantity" min="0" max="<%= product.stock %>" class="form-control">
-          </div>
-          <div style="margin-left: 5%;">
-            <input id="clickMe" type="submit" value="Add to Order" class="btn">
-          </div>
-        </div>
+      <td style="text-align: center; vertical-align: middle;">
+        <input type="number" id="quantity" name="quantity" min="0" max="<%= product.stock %>" class="form-control">
       </td>
+
+      <td style="text-align: center; vertical-align: middle;">
+          <input id="sendToOrder" type="submit" value="Add to Order" class="btn" onclick="addRowHandlers()">
+      </td>
+
     </tr>
   <%= end %>
   </tbody>
@@ -74,7 +75,19 @@
         <h4 class="modal-title" id="myModalLabel">Order</h4>
       </div>
       <div class="modal-body">
-        ...
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -87,6 +100,37 @@
 
 <script type="text/javascript">
   //document.getElementById("clickMe").onclick = function () { alert('hello!'); };
+  // Function to add the data to the order
+  function addRowHandlers() {
+    var table = document.getElementById("products");
+    var rows = table.getElementsByTagName("tr");
+    for (i = 0; i < rows.length; i++) {
+        var currentRow = table.rows[i];
+        var createClickHandler =
+        function(row)
+        {
+            return function() {
+
+              // Get the data from the rows
+              var get_product_code = row.getElementsByTagName("td")[1];
+              var get_price = row.getElementsByTagName("td")[6];
+
+              // The values
+              var product_code = get_product_code.innerHTML;
+              var price = get_price.innerHTML;
+
+
+              alert("product_code: " + price);
+
+
+            };
+        };
+        //currentRow.onclick = createClickHandler(currentRow);
+    }
+  }
+
+  //window.onload = addRowHandlers();
+
   $(document).ready(function(){
       $('#products').DataTable({
         stateSave: true,
