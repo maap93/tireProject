@@ -117,7 +117,7 @@
   $(document).ready(function () {
     'use strict';
 
-    Vue.config.devtools = true;
+    //Vue.config.devtools = true;
     window.$app = new Vue({
       'el': '#root',
       'data': {
