@@ -1,135 +1,178 @@
-<div class="row" style="margin-bottom: 0%;">
-  <div style="display:flex; justify-content: center; margin-bottom: 1%; align-items: center;">
-      <div style="width: 100%;">
-        <h1 style="text-align: center; font-size:5.5rem; margin-bottom: 1%;">Products</h1>
-      </div>
-      <div class="text-right" style="padding-right: 1%;">
-        <button type="button" class="btn btn-dafault btn-lg" data-toggle="modal" data-target="#orderModal">View Order</button>
-      </div>
+<main id="root">
+  <div class="row" style="margin-bottom: 0%;">
+    <div style="display:flex; justify-content: center; margin-bottom: 1%; align-items: center;">
+        <div style="width: 100%;">
+          <h1 style="text-align: center; font-size:5.5rem; margin-bottom: 1%;">Products</h1>
+        </div>
+        <div class="text-right" style="padding-right: 1%;">
+          <button type="button" class="btn btn-dafault btn-lg" data-toggle="modal" data-target="#orderModal" v-bind:disabled="cart.length == 0">View Order</button>
+        </div>
+    </div>
   </div>
-</div>
+  <table id="products" class="table table-hover" style="width: 100%;">
+    <thead>
+      <tr align="center">
+        <th style="text-align: center;">Product</th>
+        <th style="text-align: center; display: none;">Product</th>
+        <th style="text-align: center;">Description</th>
+        <th style="text-align: center;">Pattern</th>
+        <th style="text-align: center;">Stock</th>
+        <th style="text-align: center;">Price</th>
+        <th style="text-align: center;">Discount Price</th>
+        <th style="text-align: center;">Quantity</th>
+        <th style="text-align: center;"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <%= for product <- @products do %>
+      <tr>
+        <td style="text-align: center;">
+          <img style="margin-top: 5%;" height="68" width="68" src="<%= Tire.ImageUploader.url(product.image1)%>">
+          <p><%= product.product_code %></p>
+        </td>
+        <td style="text-align: center; display:none;">
+          <%= product.product_code %>
+        </td>
+        <td style="text-align: center; vertical-align: middle;">
+          <%= product.description %>
+        </td>
+        <td style="text-align: center; vertical-align: middle;">
+          <%= product.pattern %>
+        </td>
+        <td style="text-align: center; vertical-align: middle;">
+          <%= product.stock %>
+        </td>
+        <td style="text-align: center; vertical-align: middle;">
+          $ <%= product.price %>
+        </td>
+        <td style="text-align: center; vertical-align: middle;">
+          <%= if @user_discount == nil do %>
+             $ <%= product.price %>
+          <%= else %>
+             $ <%= product.price - (@user_discount * product.price / 100) %>
+          <% end  %>
+        </td>
 
-<table id="products" class="table table-hover" style="width: 100%;">
-  <thead>
-    <tr align="center">
-      <th style="text-align: center;">Product</th>
-      <th style="text-align: center; display: none;">Product</th>
-      <th style="text-align: center;">Description</th>
-      <th style="text-align: center;">Pattern</th>
-      <th style="text-align: center;">Stock</th>
-      <th style="text-align: center;">Price</th>
-      <th style="text-align: center;">Discount Price</th>
-      <th style="text-align: center;">Quantity</th>
-      <th style="text-align: center;"></th>
-    </tr>
-  </thead>
-  <tbody>
-  <%= for product <- @products do %>
-    <tr>
-      <td style="text-align: center;">
-        <img style="margin-top: 5%;" height="68" width="68" src="<%= Tire.ImageUploader.url(product.image1)%>">
-        <p><%= product.product_code %></p>
-      </td>
-      <td style="text-align: center; display:none;">
-        <%= product.product_code %>
-      </td>
-      <td style="text-align: center; vertical-align: middle;">
-        <%= product.description %>
-      </td>
-      <td style="text-align: center; vertical-align: middle;">
-        <%= product.pattern %>
-      </td>
-      <td style="text-align: center; vertical-align: middle;">
-        <%= product.stock %>
-      </td>
-      <td style="text-align: center; vertical-align: middle;">
-        $ <%= product.price %>
-      </td>
-      <td style="text-align: center; vertical-align: middle;">
-        <%= if @user_discount == nil do %>
-           $ <%= product.price %>
-        <%= else %>
-           $ <%= product.price - (@user_discount * product.price / 100) %>
-        <% end  %>
-      </td>
+        <td style="text-align: center; vertical-align: middle;">
+          <input type="number" id="quantity" name="quantity" min="0" max="<%= product.stock %>" class="form-control" v-model.number="items[<%= product.id %>].$count">
+        </td>
 
-      <td style="text-align: center; vertical-align: middle;">
-        <input type="number" id="quantity" name="quantity" min="0" max="<%= product.stock %>" class="form-control">
-      </td>
+        <td style="text-align: center; vertical-align: middle;">
+            <input id="sendToOrder" type="submit" value="Add to Order" class="btn" v-bind:disabled="items[<%= product.id %>].$count == 0" v-on:click="add_to_cart(items[<%= product.id %>])">
+        </td>
 
-      <td style="text-align: center; vertical-align: middle;">
-          <input id="sendToOrder" type="submit" value="Add to Order" class="btn" onclick="addRowHandlers()">
-      </td>
+      </tr>
+    <%= end %>
+    </tbody>
+  </table>
 
-    </tr>
-  <%= end %>
-  </tbody>
-</table>
-
-<!-- Modal Section -->
-<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Order</h4>
-      </div>
-      <div class="modal-body">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Place Order</button>
+  <!-- Modal Section -->
+  <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Order</h4>
+        </div>
+        <div class="modal-body">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in cart">
+                <td><a href="#" v-on:click="remove_from_cart(item)"><i class="glyphicon glyphicon-remove"></i></a></td>
+                <td>{{ item.code }}</td>
+                <td>{{ item.count }}</td>
+                <td>USD ${{ item.price | currency }}</td>
+                <td>USD ${{ item.price * item.count | currency }}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td></td>
+                <td colspan="3">Total</td>
+                <td>USD ${{ total(cart) | currency }}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" v-on:click="place_order(cart)">Place Order</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</main>
 <!-- End Modal Section -->
 
 <script type="text/javascript">
-  //document.getElementById("clickMe").onclick = function () { alert('hello!'); };
-  // Function to add the data to the order
-  function addRowHandlers() {
-    var table = document.getElementById("products");
-    var rows = table.getElementsByTagName("tr");
-    for (i = 0; i < rows.length; i++) {
-        var currentRow = table.rows[i];
-        var createClickHandler =
-        function(row)
-        {
-            return function() {
+  $(document).ready(function () {
+    'use strict';
 
-              // Get the data from the rows
-              var get_product_code = row.getElementsByTagName("td")[1];
-              var get_price = row.getElementsByTagName("td")[6];
+    Vue.config.devtools = true;
+    window.$app = new Vue({
+      'el': '#root',
+      'data': {
+        'items': {
+          <%= for product <- @products do %>
+            <%= product.id %>: {
+              'id': <%= product.id %>,
+              'code': '<%= product.product_code %>',
+              'price': <%= if @user_discount == nil do %><%= product.price %><%= else %><%= product.price - (@user_discount * product.price / 100) %><% end  %>,
+              'count': 0,
+              '$count': 0
+            },
+          <% end %>
+        },
+        'cart': []
+      },
+      'methods': {
+        'total': function (items) {
+          return items.reduce((sum, item) => (sum + (item.count * item.price)), 0.0);
+        },
+        'add_to_cart': function (item) {
 
-              // The values
-              var product_code = get_product_code.innerHTML;
-              var price = get_price.innerHTML;
+          if (item.$count > 0) {
+            if (!this.cart.includes(item)) this.cart.push(item);
+            item.count += item.$count;
+            item.$count = 0;
+          }
+        },
+        'remove_from_cart': function (item) {
 
+          if (this.cart.includes(item)) {
+            this.cart.splice(this.cart.indexOf(item), 1);
+            item.count = 0;
+            if (this.cart.length == 0) $('#orderModal').modal('hide');
+          }
+        },
+        'place_order': function (items) {
 
-              alert("product_code: " + price);
+          let data = JSON.stringify(items.map(({ id, count, price }) => ({ id, count, price, 'total': (price * count) })));
+          console.log(data);
 
+          let request = $.ajax('/order', {
+            'method': 'POST',
+            'data': data
+          });
+          request.then(response => {
 
-            };
-        };
-        //currentRow.onclick = createClickHandler(currentRow);
-    }
-  }
+            this.cart.forEach(i => { i.count = 0; });
+            this.cart.length = 0;
+          });
+        }
+      }
+    });
+  });
 
-  //window.onload = addRowHandlers();
 
   $(document).ready(function(){
       $('#products').DataTable({
