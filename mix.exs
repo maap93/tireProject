@@ -46,7 +46,7 @@ defmodule Tire.Mixfile do
      {:exrm, "~> 0.15.3" },
      {:scrivener_html, "~>1.1"},
      {:scrivener_ecto, "~> 1.0"},
-     {:swoosh, "~> 0.7.0"}]
+     {:swoosh, "~> 0.7.0"}, {:mailgun, "~> 0.1.1"}, {:poison, "~> 2.0", override: true}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

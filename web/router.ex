@@ -55,6 +55,12 @@ defmodule Tire.Router do
     get "/", PageController, :index
   end
 
+  scope "/orders", Tire do
+    pipe_through :protected
+    #resources "/", OrderController, only: [:create]
+    post "/email", OrderController, :sendEmail
+  end
+
   scope "/products", Tire do
     pipe_through :protected
     resources "/", ProductController, only: [:index, :show]

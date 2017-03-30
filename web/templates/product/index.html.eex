@@ -110,6 +110,9 @@
       </div>
     </div>
   </div>
+
+
+
 </main>
 <!-- End Modal Section -->
 
@@ -156,11 +159,17 @@
         },
         'place_order': function (items) {
 
-          let data = JSON.stringify(items.map(({ id, count, price }) => ({ id, count, price, 'total': (price * count) })));
+          let data = JSON.stringify(items.map(({ code, count, price }) => ({ code, count, price, 'total': (price * count) })));
           console.log(data);
 
-          let request = $.ajax('/order', {
+          let request = $.ajax('/orders/email', {
             'method': 'POST',
+            beforeSend: function(xhr)
+            {
+              let token = "<%= get_csrf_token() %>";
+              xhr.setRequestHeader('x-csrf-token', token );
+              xhr.setRequestHeader("Content-Type","application/json");
+            },
             'data': data
           });
           request.then(response => {

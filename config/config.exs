@@ -31,6 +31,13 @@ config :ex_admin,
     Tire.ExAdmin.Order,
   ]
 
+config :tire, Tire.Mailer,
+  adapter: Swoosh.Adapters.Mailgun,
+  api_key: "key-787f5f984a51f3d03a0801e6da969c85",
+  domain: "ctdtires.com"
+
+config :tire, TireMailer,
+  adapter: Swoosh.Adapters.Local
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
