@@ -10,15 +10,15 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img src="http://placehold.it/150x50&text=Logo" alt="">
+                <img src='/images/Logo2.png' style="width:70px; height:60px; margin-left:15%; padding-bottom: 15%;" alt="">
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-left:5%;">
             <ul class="nav navbar-nav">
-                <li>
-                    <%= link "Home", to: page_path(@conn, :index)%>
-                </li>
+                <!--<li>
+                    <%=# link "Home", to: page_path(@conn, :index)%>
+                </li>-->
                 <li>
                     <%= link "Products", to: product_path(@conn, :index)%>
                 </li>

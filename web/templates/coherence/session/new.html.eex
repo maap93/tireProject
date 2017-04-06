@@ -23,7 +23,7 @@
         <br>
         <%= link "Cancel", to: Coherence.Config.logged_out_url("/"), class: "btn" %>
 
-        <p><%= coherence_links(@conn, :new_session) %></p>
+        <!--<p><%= #coherence_links(@conn, :new_session) %></p>-->
 
     <% end %>
   </div>

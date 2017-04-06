@@ -8,8 +8,11 @@ defmodule Tire.OrderEmail do
     Enum.map(email_params, fn %{"code" => code,
     "count" => count,
     "price" => price,
-    "total" => total } ->
-    "<p>Product Code: #{code}, Quantity: #{count}, Individual Price: #{price} , Total: #{total}</p><br>"
+    "total" => total,
+    "description" => description } ->
+      final_price = Float.ceil(price,2)
+      final_total = Float.ceil(total, 2)
+    "<p>Product Code: #{code}, Description: #{description}, Quantity: #{count}, Individual Price: #{final_price} , Total: #{final_total}</p><br>"
     end)
   end
 

@@ -10,6 +10,7 @@ defmodule Tire.OrderController do
     user_name = conn.assigns.current_user.name
     #IO.inspect "EMAIL PARAMS"
     IO.inspect "EMAIL PARAMS"
+    IO.inspect email_params
 
     OrderEmail.welcome(user_email, user_name, email_params)
     |> Mailer.deliver

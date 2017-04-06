@@ -2,11 +2,11 @@
   <div class="footer-grids">
     <div class="footer one">
       <h3>More About Countrywide Tire Distributors</h3>
-      <p> Nemo enim ipsam voluptatem quia
+      <!--<p> Nemo enim ipsam voluptatem quia
       voluptas sit aspernatur aut odit aut fugit,
       sed quia consequuntur magni dolores eos qui
       ratione voluptatem sequi nesciunt.</p>
-      <p class="adam">- Patrick Victoria, CEO</p>
+      <p class="adam">- Patrick Victoria, CEO</p>-->
       <div class="clear"></div>
     </div>
     <div class="footer two">
@@ -22,8 +22,8 @@
     <div class="footer three">
       <h3>Contact Information</h3>
       <ul>
-        <li>The company name <span>Lorem ipsum dolor,</span>Glasglow Dr 40 Fe 72.  </li>
-        <li>1234567890  </li>
+        <li>Countrywide Tire Distributors <!--<span>Lorem ipsum dolor,</span>--> <br> 7571 Chapman Ave Garden Grove CA 92841</li>
+        <li>(562)940-7692  </li>
         <li><a href="mailto:info@example.com">contact@example.com</a> </li>
       </ul>
     </div>

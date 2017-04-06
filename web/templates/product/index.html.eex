@@ -13,12 +13,12 @@
     <thead>
       <tr align="center">
         <th style="text-align: center;">Product</th>
-        <th style="text-align: center; display: none;">Product</th>
+        <th style="text-align: center; display: none;">Search</th>
         <th style="text-align: center;">Description</th>
         <th style="text-align: center;">Pattern</th>
         <th style="text-align: center;">Stock</th>
-        <th style="text-align: center;">Price</th>
-        <th style="text-align: center;">Discount Price</th>
+        <th style="text-align: center;">MSRP Price</th>
+        <th style="text-align: center;">Your Price</th>
         <th style="text-align: center;">Quantity</th>
         <th style="text-align: center;"></th>
       </tr>
@@ -31,7 +31,7 @@
           <p><%= product.product_code %></p>
         </td>
         <td style="text-align: center; display:none;">
-          <%= product.product_code %>
+          <%= product.search %>
         </td>
         <td style="text-align: center; vertical-align: middle;">
           <%= product.description %>
@@ -43,13 +43,13 @@
           <%= product.stock %>
         </td>
         <td style="text-align: center; vertical-align: middle;">
-          $ <%= product.price %>
+          $ <%= Float.ceil(product.price, 2) %>
         </td>
         <td style="text-align: center; vertical-align: middle;">
           <%= if @user_discount == nil do %>
-             $ <%= product.price %>
+             $ <%= Float.ceil(product.price, 2) %>
           <%= else %>
-             $ <%= product.price - (@user_discount * product.price / 100) %>
+             $ <%= Float.ceil(product.price - (@user_discount * product.price / 100), 2) %>
           <% end  %>
         </td>
 
@@ -131,7 +131,8 @@
               'code': '<%= product.product_code %>',
               'price': <%= if @user_discount == nil do %><%= product.price %><%= else %><%= product.price - (@user_discount * product.price / 100) %><% end  %>,
               'count': 0,
-              '$count': 0
+              '$count': 0,
+              'description': '<%= product.description %>'
             },
           <% end %>
         },
@@ -159,7 +160,7 @@
         },
         'place_order': function (items) {
 
-          let data = JSON.stringify(items.map(({ code, count, price }) => ({ code, count, price, 'total': (price * count) })));
+          let data = JSON.stringify(items.map(({ description, code, count, price }) => ({ description, code, count, price, 'total': (price * count) })));
           console.log(data);
 
           let request = $.ajax('/orders/email', {
