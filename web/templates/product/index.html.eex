@@ -51,9 +51,9 @@
         </td>
         <td style="text-align: center; vertical-align: middle;">
           <%= if @user_discount == nil do %>
-             $ <%= Float.ceil(product.price, 2) %>
+             $ <%= Float.ceil(product.tsprice, 2) %>
           <%= else %>
-             $ <%= Float.ceil(product.price - (@user_discount * product.price / 100), 2) %>
+             $ <%= Float.ceil(product.tsprice - (@user_discount * product.tsprice / 100), 2) %>
           <% end  %>
         </td>
 
@@ -133,7 +133,7 @@
             <%= product.id %>: {
               'id': <%= product.id %>,
               'code': '<%= product.product_code %>',
-              'price': <%= if @user_discount == nil do %><%= product.price %><%= else %><%= product.price - (@user_discount * product.price / 100) %><% end  %>,
+              'price': <%= if @user_discount == nil do %><%= product.tsprice %><%= else %><%= product.tsprice - (@user_discount * product.tsprice / 100) %><% end  %>,
               'count': 0,
               '$count': 0,
               'description': '<%= product.description %>'
