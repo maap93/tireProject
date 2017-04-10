@@ -9,15 +9,10 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
-Tire.Repo.delete_all Tire.User
-Tire.Repo.delete_all Tire.Request
-Tire.Repo.delete_all Tire.Order
-Tire.Repo.delete_all Tire.Product
-
 
 Tire.Repo.delete_all Tire.User
 
-Tire.User.changeset(%Tire.User{}, %{name: "Administrator", email: "admin@example.org", password: "password", password_confirmation: "password", admin: true})
+Tire.User.changeset(%Tire.User{}, %{name: "Administrator", email: "admin@example.org", password: "password", password_confirmation: "password", admin: true, username: "admin"})
 |> Tire.Repo.insert!
 
 Tire.User.changeset(%Tire.User{}, %{name: "Guest", email: "guest@example.org", password: "password", password_confirmation: "password", admin: false})
