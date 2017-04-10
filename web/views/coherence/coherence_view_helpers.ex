@@ -171,7 +171,7 @@ defmodule Tire.Coherence.ViewHelpers do
 
   defp profile_link(current_user, conn) do
     if Config.user_schema.registerable? do
-      link current_user.name, to: coherence_path(@helpers, :registration_path, conn, :show)
+      current_user.name
     else
       current_user.name
     end

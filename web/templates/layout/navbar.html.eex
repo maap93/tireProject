@@ -23,12 +23,12 @@
                     <%= link "Products", to: product_path(@conn, :index)%>
                 </li>
                 <li>
-                    <a href="#">My Account</a>
+                  <%= link "My Account", to: user_path(@conn, :show, @conn.assigns.current_user) %>
                 </li>
 
             </ul>
-            <ul class="nav navbar-nav pull-right">
-              <li><%= Tire.Coherence.ViewHelpers.coherence_links(@conn, :layout) %></li>
+            <ul class="nav navbar-nav pull-right" style="color:white; margin-top:1%;">
+              <li><%= Tire.Coherence.ViewHelpers.coherence_links(@conn, :layout, register: false) %></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

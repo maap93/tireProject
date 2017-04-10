@@ -1,0 +1,22 @@
+<div class="container">
+  <h1 style="text-align: center; font-size: 5.5rem;">Account Information</h1>
+  <div class="row">
+
+
+    <div class="col-xs-12">
+      <p style="font-size:2.5rem; line-height: 300%;">
+        <b>E-mail:</b> <%= @conn.assigns.current_user.email %>
+        <br>
+        <b>Phone:</b> <%= @conn.assigns.current_user.phone %>
+        <br>
+        <b>My Discount:</b> <%= @conn.assigns.current_user.discount %> %
+        <br>
+        <b>Address:</b> <%= @conn.assigns.current_user.address %>
+        <br>
+        <b>Country:</b> <%= @conn.assigns.current_user.country %>
+      </p>
+    </div>
+
+  </div>
+
+</div>

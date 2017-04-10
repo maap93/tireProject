@@ -66,6 +66,11 @@ defmodule Tire.Router do
     resources "/", ProductController, only: [:index, :show]
   end
 
+  scope "/users", Tire do
+    pipe_through :protected
+    resources "/", UserController, only: [:show]
+  end
+
   scope "/requests", Tire do
     pipe_through :protected
     resources "/", RequestController

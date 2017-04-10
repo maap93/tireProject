@@ -13,6 +13,7 @@
     <thead>
       <tr align="center">
         <th style="text-align: center;">Product</th>
+        <th style="text-align: center;">Brand</th>
         <th style="text-align: center; display: none;">Search</th>
         <th style="text-align: center;">Description</th>
         <th style="text-align: center;">Pattern</th>
@@ -29,6 +30,9 @@
         <td style="text-align: center;">
           <img style="margin-top: 5%;" height="68" width="68" src="<%= Tire.ImageUploader.url(product.image1)%>">
           <p><%= product.product_code %></p>
+        </td>
+        <td style="text-align: center; vertical-align: middle;">
+          <%= product.brand %>
         </td>
         <td style="text-align: center; display:none;">
           <%= product.search %>
