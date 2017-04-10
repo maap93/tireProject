@@ -1,7 +1,7 @@
 
   <div class="footer-grids">
     <div class="footer one">
-      <h3>More About Countrywide Tire Distributors</h3>
+      <!--<h3>More About Countrywide Tire Distributors</h3>-->
       <!--<p> Nemo enim ipsam voluptatem quia
       voluptas sit aspernatur aut odit aut fugit,
       sed quia consequuntur magni dolores eos qui
@@ -10,21 +10,21 @@
       <div class="clear"></div>
     </div>
     <div class="footer two">
-      <h3>Keep Connected</h3>
+      <!--<h3>Keep Connected</h3>
       <ul>
         <li><a class="fb" href="#"><i></i>Like us on Facebook</a></li>
         <li><a class="fb1" href="#"><i></i>Follow us on Twitter</a></li>
         <li><a class="fb2" href="#"><i></i>Add us on Google Plus</a></li>
         <li><a class="fb3" href="#"><i></i>Follow us on Dribbble</a></li>
         <li><a class="fb4" href="#"><i></i>Follow us on Pinterest</a></li>
-      </ul>
+      </ul>-->
     </div>
     <div class="footer three">
       <h3>Contact Information</h3>
       <ul>
         <li>Countrywide Tire Distributors <!--<span>Lorem ipsum dolor,</span>--> <br> 7571 Chapman Ave Garden Grove CA 92841</li>
         <li>(562)940-7692  </li>
-        <li><a href="mailto:info@example.com">contact@example.com</a> </li>
+        <!--<li><a href="mailto:info@example.com">contact@example.com</a> </li>-->
       </ul>
     </div>
     <div class="clear"></div>
@@ -35,9 +35,9 @@
     </div>
     <div class="copy-right">
       <ul>
-        <li><a href="#">Company Information</a></li>
+        <!--<li><a href="#">Company Information</a></li>
         <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Terms & Conditions</a></li>-->
       </ul>
     </div>
     <div class="clear"></div>

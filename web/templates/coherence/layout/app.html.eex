@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body style="background: url('/images/newTireBack.jpg') no-repeat 62% 34%;background-size: cover; text-align:center;">
+  <body style="background: url('/images/Background.jpg') no-repeat 62% 34%;background-size: cover; text-align:center;">
 
 
 

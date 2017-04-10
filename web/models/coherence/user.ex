@@ -7,6 +7,10 @@ defmodule Tire.User do
     field :email, :string
     field :admin, :boolean
     field :discount, :float
+    field :address, :string
+    field :country, :string
+    field :phone, :string
+    field :username, :string
     has_many :requests, Tire.Request
     coherence_schema
 
@@ -15,7 +19,7 @@ defmodule Tire.User do
 
   def changeset(model, params \\ %{}) do
     model
-    |> cast(params, [:name, :email, :admin, :discount] ++ coherence_fields)
+    |> cast(params, [:name, :email, :admin, :discount, :address, :country, :phone, :username] ++ coherence_fields)
     |> cast_assoc(:requests)
     |> validate_required([:name, :email])
     |> validate_format(:email, ~r/@/)

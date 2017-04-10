@@ -57,6 +57,10 @@ config :coherence,
   email_from_email: "webmaster@ctdtires.com",
   opts: [:trackable, :invitable, :rememberable, :authenticatable, :recoverable, :lockable, :unlockable_with_token, :registerable]
 
+#Added the username login
+config :coherence,
+  login_field: :username
+
 config :coherence, Tire.Coherence.Mailer,
   adapter: Swoosh.Adapters.Mailgun,
   api_key: "key-787f5f984a51f3d03a0801e6da969c85",

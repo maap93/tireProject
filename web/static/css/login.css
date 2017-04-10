@@ -76,7 +76,7 @@ input[type="name"] {
     background: url("../images/name.png") no-repeat 10px 11px;
     background-size: 24px;
 }
-input[type="email"], input[type="password"] {
+input[type="text"], input[type="password"] {
     width: 88%;
     padding: 15px 0px 15px 42px;
     border: 1px solid #fff;
@@ -86,8 +86,8 @@ input[type="email"], input[type="password"] {
     margin: 14px 0px;
     font-family: 'Roboto', sans-serif;
 }
-input[type="email"] {
-    background: url("../images/mail.png") no-repeat 10px 11px;
+input[type="text"] {
+    background: url("../images/name.png") no-repeat 10px 11px;
     background-size: 24px;
 }
 input[type="password"] {
